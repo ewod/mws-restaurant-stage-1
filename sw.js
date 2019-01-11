@@ -26,6 +26,7 @@ self.addEventListener('install', function(event) {
         '/js/main.js',
         '/js/restaurant_info.js',
         '/offline.html',
+        '/sw.js',
         '/restaurant.html'
       ]);
     })
@@ -45,7 +46,6 @@ caches.match(event.request)
 
 }).catch(function(){
 console.log('OFFLINE Condition for a page request that has not been cached');
-//return new Response('Page not found in cache while offline. Goto HOME page using browser arrows');
 return caches.match(offlineUrl);
 })
 
