@@ -42,6 +42,9 @@ caches.match(event.request)
         if (response) {
           return response;
         }
+        caches.open(staticCacheName).then(function(cache) {
+        cache.add(event.request.url);
+        })
           return fetch(event.request);
 
 }).catch(function(){
